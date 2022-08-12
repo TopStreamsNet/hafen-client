@@ -60,7 +60,9 @@ public class UI {
     private boolean gprefsdirty = false;
     public final ActAudio.Root audio = new ActAudio.Root();
     private static final double scalef;
-    
+
+	public GameUI gui;
+
     {
 	lastevent = lasttick = Utils.rtime();
     }

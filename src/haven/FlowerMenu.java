@@ -98,7 +98,7 @@ public class FlowerMenu extends Widget {
     }
 
     public class Opening extends NormAnim {
-	Opening() {super(0.25);}
+	Opening() {super(0);}
 	
 	public void ntick(double s) {
 	    double ival = 0.8;
@@ -117,7 +117,7 @@ public class FlowerMenu extends Widget {
 	Petal chosen;
 		
 	Chosen(Petal c) {
-	    super(0.75);
+	    super(0);
 	    chosen = c;
 	}
 		
@@ -149,7 +149,7 @@ public class FlowerMenu extends Widget {
     }
 
     public class Cancel extends NormAnim {
-	Cancel() {super(0.25);}
+	Cancel() {super(0);}
 
 	public void ntick(double s) {
 	    double ival = 0.8;

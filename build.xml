@@ -59,6 +59,7 @@
       <classpath>
 	<pathelement path="lib/ext/jogl/jogl-all.jar" />
 	<pathelement path="lib/ext/jogl/gluegen-rt.jar" />
+    <pathelement path="lib/ext/py4j.jar" />
 	<pathelement path="lib/jglob.jar" />
       </classpath>
       <compilerarg value="-Xlint:unchecked" />
@@ -88,7 +89,7 @@
       <fileset dir="build/classes-lib" />
       <manifest>
 	<attribute name="Main-Class" value="haven.MainFrame" />
-	<attribute name="Class-Path" value="jogl-all.jar gluegen-rt.jar builtin-res.jar hafen-res.jar" />
+	<attribute name="Class-Path" value="jogl-all.jar gluegen-rt.jar builtin-res.jar hafen-res.jar py4j.jar" />
       </manifest>
     </jar>
     <chmod file="build/hafen.jar" perm="a+x" />
@@ -117,6 +118,11 @@
 	<include name="*.jar" />
       </fileset>
     </copy>
+    <copy todir="build">
+      <fileset dir="lib/ext">
+        <include name="py4j.jar" />
+      </fileset>
+    </copy>
     <copy file="local-config.properties" tofile="build/haven-config.properties" failonerror="false" quiet="true" />
   </target>
 
@@ -129,6 +135,7 @@
       <fileset dir="lib/ext">
 	<include name="hafen-res.jar" />
 	<include name="builtin-res.jar" />
+    <include name="py4j.jar" />
       </fileset>
       <fileset dir="lib/ext/jogl">
 	<include name="*.jar" />
@@ -141,7 +148,9 @@
   <target name="deftgt" depends="jars, bin" />
 
   <target name="run" depends="bin">
-    <java jar="bin/hafen.jar" fork="true" />
+    <java jar="bin/hafen.jar" fork="true">
+      <jvmarg line="--add-exports java.base/java.lang=ALL-UNNAMED --add-exports java.desktop/sun.awt=ALL-UNNAMED --add-exports java.desktop/sun.java2d=ALL-UNNAMED"/>
+    </java>
   </target>
 
   <target name="clean">

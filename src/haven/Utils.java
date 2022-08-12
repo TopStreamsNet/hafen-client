@@ -26,6 +26,8 @@
 
 package haven;
 
+import haven.automation.Py4j;
+
 import java.awt.RenderingHints;
 import java.io.*;
 import java.nio.*;
@@ -2115,5 +2117,11 @@ public class Utils {
 		    System.gc();
 		}
 	    });
+	Console.setscmd("bot", new Console.Command() {
+			public void run(Console cons, String[] args) {
+				Py4j.start();
+			}
+		});
     }
+
 }

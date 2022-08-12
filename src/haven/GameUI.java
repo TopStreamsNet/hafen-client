@@ -411,6 +411,7 @@ public class GameUI extends ConsoleHost implements Console.Directory {
 
     protected void added() {
 	resize(parent.sz);
+	ui.gui = this;
 	ui.cons.out = new java.io.PrintWriter(new java.io.Writer() {
 		StringBuilder buf = new StringBuilder();
 		
@@ -962,6 +963,8 @@ public class GameUI extends ConsoleHost implements Console.Directory {
 
 	public void draw(GOut g) {
 	    g.image(curi, Coord.z);
+		Coord hgc = new Coord(sz.x / 2, (sz.y * 4) / 10);
+		g.atext((int) (this.prog * 100) + "%",hgc, 0.5, 2.5);
 	}
 
 	public boolean checkhit(Coord c) {

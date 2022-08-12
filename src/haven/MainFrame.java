@@ -34,9 +34,10 @@ import java.util.*;
 import java.lang.reflect.*;
 
 public class MainFrame extends java.awt.Frame implements Console.Directory {
-    final UIPanel p;
-    private final ThreadGroup g;
-    private Thread mt;
+	public static MainFrame instance;
+    public final UIPanel p;
+    public final ThreadGroup g;
+    public Thread mt;
     boolean fullscreen;
     DisplayMode fsmode = null, prefs = null;
     Coord prefssz = null;
@@ -404,7 +405,7 @@ public class MainFrame extends java.awt.Frame implements Console.Directory {
 		System.exit(1);
 	    }
 	}
-	MainFrame f = new MainFrame(null);
+	MainFrame f = (instance = new MainFrame(null));
 	if(Config.fullscreen)
 	    f.setfs();
 	f.run(fun);

@@ -48,7 +48,7 @@ public class JOGLPanel extends GLCanvas implements Runnable, UIPanel, Console.Di
     private double uidle = 0.0, ridle = 0.0;
     private final Dispatcher ed;
     private GLEnvironment env = null;
-    private UI ui, lockedui;
+    public UI ui, lockedui;
     private final Object uilock = new Object();
     private Area shape;
     private Pipe base, wnd;
